@@ -13,11 +13,11 @@ public class lab_13 {
 		//System.out.println(sumDigits(12345)); // 15
 		//System.out.println(sumDigits(954736163)); // 44
 		
-		System.out.println(binaryRepresentation(0)); // 0
-		System.out.println(binaryRepresentation(1)); // 1
-		System.out.println(binaryRepresentation(5)); // 101
-		System.out.println(binaryRepresentation(10)); // 1010
-		System.out.println(binaryRepresentation(42)); // 101010
+		System.out.println(toBinary(0)); // 0
+		System.out.println(toBinary(1)); // 1
+		System.out.println(toBinary(5)); // 101
+		System.out.println(toBinary(10)); // 1010
+		System.out.println(toBinary(42)); // 101010
 
 		
 		
@@ -40,25 +40,29 @@ public class lab_13 {
 		}
 		return (num % 10) + sumDigits(num / 10);
 	}
-	public static String binaryRepresentation(int n)
+	public static String toBinary(int n)
 	{
-		int binaryNum = 1;
 		if (n == 0)
 		{
 			return "0";
 		}
-		while (binaryNum < n)
+		if (n == -1)
 		{
-			binaryNum *= 2;
-			
+			return "";
 		}
-		if (binaryNum == n)
+		if (n % 2 == 1 && n != 3 && n != 1)
 		{
-			return ("1" + binaryRepresentation(0));
+			return ("10" + toBinary(n - (n - (n % 2))));
 		}
-		binaryNum /= 2;
-		n -= binaryNum;
-		return ("1" + binaryRepresentation(n));
+		else if (n > 1)
+		{
+			return ("1" + toBinary(n - (n - (n % 2))));
+		}
+		else
+		{
+			return ("1" + toBinary(-1));
+		}
+		
 	}
 	
 
